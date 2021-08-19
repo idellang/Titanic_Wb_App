@@ -1,48 +1,14 @@
-from sklearn.base import BaseEstimator, TransformerMixin
 import streamlit as st
 import pandas as pd
 import numpy as np
 from pickle import load
 from PIL import Image
+from preprocessing_classes import DataFrameSelector, RelAdder, MostFrequentImputer
 
 # load the test data. This is needed for preprocessing
 test_data = pd.read_csv('data/test.csv')
 
 # load sklearn classes
-
-
-class DataFrameSelector(BaseEstimator, TransformerMixin):
-    def __init__(self, attribute_names):
-        self.attribute_names = attribute_names
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X):
-        return X[self.attribute_names]
-
-
-class RelAdder(BaseEstimator, TransformerMixin):
-    def __init__(self):
-        pass
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X, y=None):
-        rel_count = X[:, 1] + X[:, 2]
-
-        return np.c_[X, rel_count]
-
-
-class MostFrequentImputer(BaseEstimator, TransformerMixin):
-    def fit(self, X, y=None):
-        self.most_frequent_ = pd.Series([X[c].value_counts().index[0] for c in X],
-                                        index=X.columns)
-        return self
-
-    def transform(self, X, y=None):
-        return X.fillna(self.most_frequent_)
 
 
 image = Image.open('images/titanic_cutout.png')
