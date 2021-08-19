@@ -58,6 +58,7 @@ expander_bar = st.expander('About')
 expander_bar.markdown("""
 * **Python libraries:** pandas, streamlit, numpy, matplotlib, PIL
 * **Data source:** [Titanic Dataset](https://www.kaggle.com/c/titanic/data).
+* **Github repository:** [Titanic_Wb_App](https://github.com/idellang/Titanic_Wb_App)
 """)
 
 
