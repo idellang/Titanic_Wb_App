@@ -67,12 +67,13 @@ st.header('Input your details')
 
 def user_input_features():
     Name = st.text_input('Name: ', 'Jonathan Berg')
-    Pclass = st.selectbox('Ticket Class: ', [1, 2, 3])
+    Pclass = st.selectbox(
+        'Ticket Class: ', ['1st class', '2nd class', '3rd class'])
     Sex = st.selectbox('Sex: ', ['male', 'female'])
     Age = st.number_input('Age', int(test_data['Age'].min(
     )), int(test_data['Age'].max()), int(test_data['Age'].median()))
 
-    SibSp = st.number_input('Number of siblings/spouses on board', test_data['SibSp'].min(
+    SibSp = st.number_input('Number of siblings/spouse on board', test_data['SibSp'].min(
     ), test_data['SibSp'].max(), int(test_data['SibSp'].median()))
 
     Parch = st.number_input('Number of parents/children on board', test_data['Parch'].min(
@@ -84,7 +85,7 @@ def user_input_features():
                             'Cherbourg', 'Queenstown', 'Southampton'])
 
     input_data = {
-        'Pclass': Pclass,
+        'Pclass': int(Pclass[0]),
         'Name': Name,
         'Sex': Sex,
         'Age': Age,
